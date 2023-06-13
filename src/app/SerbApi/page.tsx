@@ -1,7 +1,8 @@
 'use client';
 
 import React, {useState} from 'react'
-import axios from 'axios';
+import axios from 'axios'
+
 
 function Page() {
 const [Value, setValue] = useState({
@@ -11,7 +12,7 @@ const [response, setresponse] = useState()
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
     axios.post('http://localhost:3000/pages/api/about', Value)
-    .then(resp=>
+    .then((resp:any)=>
        setresponse(resp.data.data.data)
         )
     .catch(err=>console.log(err, "Error"))
