@@ -7,25 +7,34 @@ function page() {
 const [Value, setValue] = useState({
     input:''
 })
+const [response, setresponse] = useState()
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        console.log(Value,'Values')
-    axios.post('http://localhost:3000/api/about', Value)
+    axios.post('http://localhost:3000/pages/api/about', Value)
     .then(resp=>
-        console.log(resp)
+       setresponse(resp.data.data.data)
         )
     .catch(err=>console.log(err, "Error"))
     }
 
     const handleChange =(e: React.ChangeEvent<HTMLInputElement>)=>{
-        e.preventDefault()
-        setValue({
-            ...Value,
-            [e.target.name]: e.target.value
-        })
+        e.preventDefault();
 
+        const { name, value } = e.target;
+
+        const newValue = /^[0-9]+$/.test(value) ? parseInt(value) : value;
+       
+  setValue((prevState) => ({
+    ...prevState,
+    [name]: newValue,
+  }));
     }
 
+console.log(Value, 'asdfadf')
+
+    const arrayResponse = response ? Object.entries(response).map(([key, value]) => ({ key, value })) : [];
+
+    console.log(arrayResponse, response);
   return (
     <>
     <div className='flex flex-col justify-center items-center mt-10'>
@@ -38,9 +47,20 @@ const [Value, setValue] = useState({
 
         </div>
          </form>
-    
     </div>
-
+<div>
+<div>
+    {arrayResponse.length > 0 ? arrayResponse.map((item:any, index) => (
+      <div key={index}>
+        <span>{item.key}: </span>
+    {typeof(item.value)==='object' ? <span>{JSON.stringify(item.Value)}</span>: <span>{item.value}</span> }
+       
+      </div>
+    ))
+         : <h2> Value not found</h2>
+}
+  </div>
+</div>
     </>
   )
 }
