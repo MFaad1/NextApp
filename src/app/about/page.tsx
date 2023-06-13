@@ -1,6 +1,8 @@
 'use client';
 import axios from 'axios'
 
+
+function About() {
   const handleClick = () => {
     axios.get('http://localhost:3000/api/home')
     .then(res=>{
@@ -9,9 +11,6 @@ import axios from 'axios'
     })
     .catch(err=>{console.log("Error has been resulved", err.messag )})
   }; 
-
-
-function About() {
   return (
     <div>
        <div className="flex justify-center mt-20">

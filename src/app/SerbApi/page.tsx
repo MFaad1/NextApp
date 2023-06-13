@@ -3,7 +3,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 
-function page() {
+function Page() {
 const [Value, setValue] = useState({
     input:''
 })
@@ -30,11 +30,8 @@ const [response, setresponse] = useState()
   }));
     }
 
-console.log(Value, 'asdfadf')
-
     const arrayResponse = response ? Object.entries(response).map(([key, value]) => ({ key, value })) : [];
 
-    console.log(arrayResponse, response);
   return (
     <>
     <div className='flex flex-col justify-center items-center mt-10'>
@@ -65,4 +62,4 @@ console.log(Value, 'asdfadf')
   )
 }
 
-export default page
+export default Page
