@@ -11,7 +11,7 @@ const [Value, setValue] = useState({
 const [response, setresponse] = useState()
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-    axios.post('http://localhost:3000/pages/api/about', Value)
+    axios.post('http://localhost:3000/api/about', Value)
     .then((resp:any)=>
        setresponse(resp.data.data.data)
         )
