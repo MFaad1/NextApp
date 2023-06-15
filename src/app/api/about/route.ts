@@ -1,18 +1,21 @@
-import { NextResponse} from "next/server";
+import { NextResponse } from 'next/server'
+import { headers } from 'next/headers'
+
 import axios from 'axios'
 
 
-export const POST= async(req: Request,)=>{
+export const POST = async (req: Request) => {
 
-    const values = await req.json()
-   let {data} = await axios.post('https://node-ts-be.vercel.app/data', values,{
-    headers: {
-      'Access-Control-Allow-Origin': 'https://next-app-trail-proj.vercel.app',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  })
-   return NextResponse.json({mesage: "Data has been found", data});
+    const values = await req.json();
+    console.log(values)
+    let { data } = await axios.post('https://node-ts-be.vercel.app/data', values)
+
+    return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+    })
 }
-
-
