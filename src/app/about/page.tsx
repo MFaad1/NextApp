@@ -4,7 +4,7 @@ import axios from 'axios'
 function About() {
 
   const handleClick = () => {
-    axios.get('http://localhost:3000/api/home')
+    axios.get('https://next-app-trail-proj-qnu7gfmhu-mfaad1.vercel.app/api/home')
     .then((res:any)=>{
         alert(res.data)
         console.log(res.data)
