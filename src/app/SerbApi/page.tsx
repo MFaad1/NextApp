@@ -13,7 +13,10 @@ const [response, setresponse] = useState()
         e.preventDefault()
     axios.post('/api/about', Value)
     .then((resp:any)=>
-       setresponse(resp.data.data.data)
+  {
+    console.log(resp.data.data, 'asdfklasdf')
+    setresponse(resp.data.data)
+  }
         )
     .catch(err=>console.log(err, "Error"))
     }
