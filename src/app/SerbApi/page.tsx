@@ -14,7 +14,6 @@ const [response, setresponse] = useState()
     axios.post('/api/about', Value)
     .then((resp:any)=>
   {
-    console.log(resp.data.data, 'asdfklasdf')
     setresponse(resp.data.data)
   }
         )
@@ -58,7 +57,7 @@ const [response, setresponse] = useState()
        
       </div>
     ))
-         : <h2> Value not found</h2>
+         : <h2>Enter Something Above to show the Values</h2>
 }
   </div>
 </div>
