@@ -3,8 +3,8 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // matching all API routes
-        source: "https://next-app-trail-proj.vercel.app*",
+  
+        source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
