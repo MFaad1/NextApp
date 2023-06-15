@@ -7,10 +7,9 @@ import axios from 'axios'
 export const POST = async (req: Request) => {
 
     const values = await req.json();
-    console.log(values)
     let { data } = await axios.post('https://node-ts-be.vercel.app/data', values)
 
-    return new Response(data.data, {
+    return new Response(JSON.stringify(data), {
         status: 200,
         headers: {
             'Access-Control-Allow-Origin': '*',
